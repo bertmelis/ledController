@@ -2,7 +2,7 @@
 
 This is a sample application to demonstrate my WS2811/WS2812 library.
 
-![screenshot][screenshot.png]
+![screenshot](screenshot.png)
 
 ## Features
 
