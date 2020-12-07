@@ -14,6 +14,13 @@ This is a sample application to demonstrate my WS2811/WS2812 library.
 - external network connections required
 - responsive design (limited testing)
 
+## How to use
+
+- download
+- install dependencies (or adjust in platformio.ini)
+- adjust platformio.ini for credentials and other data
+- build & upload to your ESP32
+
 ## Known limitations
 
 - hardcoded credentials
