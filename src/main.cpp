@@ -191,6 +191,7 @@ void setup() {
   effects.emplace("singleColour", nullptr);
   effects.emplace("circus", new Circus(1000));
   effects.emplace("snow", new SnowSparkle({82, 56, 13}, 3, 100, 500));
+  effects.emplace("aurora", new Aurora);
   currentEffect = effects.find("singleColour");
 
   // give semaphore for first use
