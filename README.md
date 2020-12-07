@@ -1,6 +1,6 @@
 # ledController
 
-This is a sample application to demonstrate my WS2811/WS2812 library.
+This is a sample application to demonstrate my [WS2811/WS2812 library](https://github.com/bertmelis/esp32WS2811).
 
 ![screenshot](screenshot.png)
 
