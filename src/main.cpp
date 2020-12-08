@@ -110,6 +110,15 @@ void handleCommand(StaticJsonDocument<jsonCapacity>& json) {
   }
 }
 
+void onMqttMessage(char* topic,
+                   char* payload,
+                   AsyncMqttClientMessageProperties properties,
+                   size_t len,
+                   size_t index,
+                   size_t total) {
+  // TODO
+}
+
 void onWsEvent(AsyncWebSocket* server, AsyncWebSocketClient* client, AwsEventType type, void* arg, uint8_t* data, size_t len) {
   if (xSemaphoreTake(smphr, 50) == pdTRUE) {
     if (type == WS_EVT_DATA) {
@@ -190,7 +199,7 @@ void setup() {
   // setup available effects
   effects.emplace("singleColour", nullptr);
   effects.emplace("circus", new Circus(1000));
-  effects.emplace("snow", new SnowSparkle({82, 56, 13}, 3, 100, 500));
+  effects.emplace("snow", new SnowSparkle({82, 56, 13}, 5, 100, 500));
   effects.emplace("aurora", new Aurora);
   currentEffect = effects.find("singleColour");
 

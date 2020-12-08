@@ -22,8 +22,16 @@
 #define MQTT_TOPIC(x) STRINGIFY(_MQTT_TOPIC(x))
 #define _MQTT_WILL_TOPIC BASETOPIC/DEVICENAME/system/status
 #define MQTT_WILL_TOPIC STRINGIFY(_MQTT_WILL_TOPIC)
+#define _MQTT_SUB_TOPIC BASETOPIC/DEVICENAME/+/set
+#define MQTT_SUB_TOPIC STRINGIFY(_MQTT_SUB_TOPIC)
 
 void setupWifi();
 void setupMqtt();
+void onMqttMessage(char* topic,
+                   char* payload,
+                   AsyncMqttClientMessageProperties properties,
+                   size_t len,
+                   size_t index,
+                   size_t total) __attribute__((weak));
 
 extern AsyncMqttClient mqttClient;

@@ -56,6 +56,7 @@ void onMqttConnect(bool sessionPresent) {
   Serial.println("Connected to MQTT.");
   nextReconnectInterval = 2;
   mqttClient.publish(MQTT_WILL_TOPIC, 0, true, "online");
+  mqttClient.subscribe(MQTT_SUB_TOPIC, 0);
 }
 
 void onMqttDisconnect(AsyncMqttClientDisconnectReason reason) {
@@ -72,5 +73,6 @@ void setupMqtt() {
             .setKeepAlive(60)
             .setWill(MQTT_WILL_TOPIC, 0, true, "offline")
             .onConnect(onMqttConnect)
-            .onDisconnect(onMqttDisconnect);
+            .onDisconnect(onMqttDisconnect)
+            .onMessage(onMqttMessage);
 }
