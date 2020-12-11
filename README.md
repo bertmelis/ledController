@@ -11,7 +11,7 @@ This is a sample application to demonstrate my [WS2811/WS2812 library](https://g
 - built-in OTA update using the webpage
 - synchronization between multiple simultaneous connected devices
 - setting colour, effects and on/off
-- external network connections required
+- no external network connections required
 - responsive design (limited testing)
 
 ## How to use
