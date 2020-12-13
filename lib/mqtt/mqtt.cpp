@@ -20,6 +20,7 @@ void connectToWifi() {
 void onWifiDisconnect() {
   Serial.println("Disconnected from Wi-Fi.");
   mqttReconnectTimer.detach(); // ensure we don't reconnect to MQTT while reconnecting to Wi-Fi
+  onWiFiDisconnected();
 }
 
 void connectToMqtt() {
@@ -29,6 +30,7 @@ void connectToMqtt() {
 
 void onWifiConnect() {
   Serial.println("Connected to Wi-Fi.");
+  onWiFiConnected();
   connectToMqtt();
 }
 

@@ -116,7 +116,12 @@ void onMqttMessage(char* topic,
                    size_t len,
                    size_t index,
                    size_t total) {
-  // TODO
+  Serial.printf("topic: %s\npayload: ", topic);
+  for (size_t i = 0; i < len; ++i) {
+    Serial.print(payload[i]);
+  }
+  Serial.print("\n");
+  
 }
 
 void onWsEvent(AsyncWebSocket* server, AsyncWebSocketClient* client, AwsEventType type, void* arg, uint8_t* data, size_t len) {
@@ -144,7 +149,7 @@ void onWsEvent(AsyncWebSocket* server, AsyncWebSocketClient* client, AwsEventTyp
   }
 }
 
-void startWebserver() {
+void setupWebserver() {
   webserver.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
     request->send_P(200, "text/html", index_html);
   });
@@ -187,7 +192,16 @@ void startWebserver() {
   });
   websocket.onEvent(onWsEvent);
   webserver.addHandler(&websocket);
+}
+
+void onWiFiConnected() {
+  setupWebserver();
   webserver.begin();
+}
+
+void onWiFiDisconnected() {
+  webserver.reset();
+  webserver.end();
 }
 
 void setup() {
@@ -206,7 +220,6 @@ void setup() {
   // give semaphore for first use
   smphr = xSemaphoreCreateBinary();
   xSemaphoreGive(smphr);
-  startWebserver();
 
   // output enable level shifter
   pinMode(23, OUTPUT);

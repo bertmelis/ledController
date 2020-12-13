@@ -33,5 +33,7 @@ void onMqttMessage(char* topic,
                    size_t len,
                    size_t index,
                    size_t total) __attribute__((weak));
+void onWiFiConnected() __attribute__((weak));
+void onWiFiDisconnected() __attribute__((weak));
 
 extern AsyncMqttClient mqttClient;
